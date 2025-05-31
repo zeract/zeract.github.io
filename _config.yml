@@ -56,7 +56,7 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "LiTao Jiang"
+  name   : "Zeract"
   avatar : "/assets/images/bio-photo.jpg"
   bio    : "知行合一."
   links:
@@ -84,7 +84,7 @@ defaults:
       author_profile: true
       read_time: true
       comments: true
-      share: true
+      share: false
       related: true
   # _pages
   - scope:

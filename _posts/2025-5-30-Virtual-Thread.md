@@ -5,7 +5,7 @@
 ![virtual-thread-architecture](../assets/images/2025-5-30-Virtual-Thread/virtual_thread.png)
 
 在一个典型的服务端应用程序中，请求处理逻辑如下所示：
-```Java
+```java
 public Order placeOrder(String cartId) {
 
   // Fetch cart from DB, it is a blocking DB call
@@ -134,7 +134,7 @@ class CustomThread implements Runnable {
 ## Virtual Thread 存在什么问题
 
 如果 `Virtual Thread` 进入 `Synchronized` 代码块内部之后**被阻塞**，那么就会出现 **Virtual Thread Pinning** 的问题，即 `Virutal Thread` 与 `Platform Thread` 被锁定，此时 `Virtual Thread` 就无法从 `Platform Thread` 上解除挂载，如果所有的 `Platform Thread` 都被锁定，那么新的 `Virtual Thread` 就无法挂载到任何一个 `Platform Thread` 上，使得任务无法继续执行，这样就会大大降低 `Virtual Thread` 的性能。
-```Java
+```java
 // Creating a new lock for each task demonstrates the difference between JDK 21 and 24
 final Object lock = new Object(); 
 synchronized (lock) {
